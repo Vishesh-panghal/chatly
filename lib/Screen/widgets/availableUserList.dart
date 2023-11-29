@@ -66,10 +66,10 @@ class ChatMessageList extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      var currUsr = snapshot.data![index];
+                      var eachUsr = snapshot.data![index];
                       return StreamBuilder(
                         stream:
-                            FirebaseProvider.getChatLastMessage(currUsr.uId!),
+                            FirebaseProvider.getChatLastMessage(eachUsr.uId!),
                         builder: (_, snapshot) {
                           if (snapshot.hasData) {
                             var msg = snapshot.data!.docs;
@@ -94,15 +94,15 @@ class ChatMessageList extends StatelessWidget {
                                       MaterialPageRoute(
                                         builder: (context) => ChatScreen(
                                           name:
-                                              '${currUsr.uFirstName} ${currUsr.uLastName}',
-                                          toId: currUsr.uId.toString(),
+                                              '${eachUsr.uFirstName} ${eachUsr.uLastName}',
+                                          toId: eachUsr.uId.toString(),
                                         ),
                                       ),
                                     );
                                   }
                                 },
                                 child: Text(
-                                  currUsr.uFirstName,
+                                  eachUsr.uFirstName,
                                   style: TextStyle(
                                     fontFamily:
                                         GoogleFonts.manrope().fontFamily,
@@ -114,7 +114,7 @@ class ChatMessageList extends StatelessWidget {
                               ),
                               subtitle: Text(
                                 msg.isEmpty
-                                    ? currUsr.uLastName
+                                    ? eachUsr.uLastName
                                     : msgModal.fromJson(msg[0].data()).message,
                                 style: TextStyle(
                                   fontFamily: GoogleFonts.manrope().fontFamily,
@@ -125,14 +125,17 @@ class ChatMessageList extends StatelessWidget {
                               trailing: Column(
                                 children: [
                                   msg.isNotEmpty
-                                      ? Text(lastMessage!.sent)
+                                      ? Text(TimeOfDay.fromDateTime(DateTime
+                                              .fromMillisecondsSinceEpoch(
+                                                  int.parse(lastMessage!.sent)))
+                                          .format(context))
                                       : SizedBox(
                                           width: 0,
                                           height: 0,
                                         ),
                                   msg.isNotEmpty
                                       ? showReadStatus(
-                                          lastMessage!, currUsr.uId!)
+                                          lastMessage!, eachUsr.uId!)
                                       : SizedBox(),
                                 ],
                               ),
@@ -167,21 +170,17 @@ class ChatMessageList extends StatelessWidget {
         builder: (_, snapshot) {
           if (snapshot.hasData) {
             var messages = snapshot.data!.docs;
+            print(messages.length);
             if (messages.isEmpty) {
-              return SizedBox(
-                child: Text(
-                  '${messages.length}',
-                  style: TextStyle(color: Colors.black),
-                ),
-              );
+              return SizedBox();
             } else {
-              Container(
+              return Container(
                 width: 20,
                 height: 20,
                 child: Center(
                   child: Text(
                     '${messages.length}',
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 decoration:
@@ -199,7 +198,8 @@ class ChatMessageList extends StatelessWidget {
 }
 
 class searchBarWidget extends StatefulWidget {
-  const searchBarWidget({super.key, required this.fontSize, required this.size});
+  const searchBarWidget(
+      {super.key, required this.fontSize, required this.size});
   final Size size;
   final double fontSize;
 

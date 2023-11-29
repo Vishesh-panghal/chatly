@@ -56,7 +56,7 @@ class _AuthenticationHomepageState extends State<AuthenticationHomepage>
                         alignment: Alignment.center,
                         width: size.width,
                         child: Text(
-                          'Talkytic'.toUpperCase(),
+                          'Chatly'.toUpperCase(),
                           style: TextStyle(
                             fontFamily: GoogleFonts.manrope().fontFamily,
                             fontSize: 52,

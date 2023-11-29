@@ -168,15 +168,15 @@ class MobileScaffold extends StatelessWidget {
                                         'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg'),
                                     radius: size.height * 0.05,
                                   ),
-                                  Text(
-                                    'Vishesh',
-                                    style: TextStyle(
-                                      fontFamily:
-                                          GoogleFonts.manrope().fontFamily,
-                                      fontSize: 15,
-                                      color: ColorConstants.whiteShade,
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   'Vishesh',
+                                  //   style: TextStyle(
+                                  //     fontFamily:
+                                  //         GoogleFonts.manrope().fontFamily,
+                                  //     fontSize: 15,
+                                  //     color: ColorConstants.whiteShade,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             );
