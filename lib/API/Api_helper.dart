@@ -1,12 +1,14 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: depend_on_referenced_packages, file_names, unused_local_variable
 
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:chatly/API/myException.dart';
+import 'package:chatly/API/Api_urls.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:chatly/API/myException.dart';
 
+//===========================GIF API======================================//
 class ApiHelper {
   Future<dynamic> getApiData({required String url}) async {
     try {
@@ -44,4 +46,22 @@ dynamic returnDataResponse(http.Response res) {
     default:
       throw FetchDataException(body: "Unknown error:- ${res.body}");
   }
+}
+
+//===============================ChatBot API===================================//
+
+void chatbotApi(String msg) async {
+  const url = api_url.chatbot_url;
+  final uri = Uri.parse(url);
+  Map<String, dynamic> request = {
+    "prompt": {
+      "messages": msg,
+    },
+    "temperature": 0.25,
+    "candidateCount": 1,
+    "topP": 1,
+    "topK": 1,
+  };
+
+  final response = await http.post(uri, body: jsonEncode(request));
 }

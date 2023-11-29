@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, use_build_context_synchronously, constant_identifier_names
+// ignore_for_file: avoid_print, use_build_context_synchronously, constant_identifier_names, depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -171,5 +171,30 @@ class FirebaseProvider {
         .collection('messages')
         .doc(mId)
         .update({'read': readTime.toString()});
+  }
+
+//=======================Perticular Chat Last Message====================//
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getChatLastMessage(
+      String toId) {
+    var chatId = getChatId(currUsrId, toId);
+    return _firebaseStrore
+        .collection(CHATROOM_COLLECTION)
+        .doc(chatId)
+        .collection('messages')
+        .orderBy('sent', descending: true)
+        .limit(1)
+        .snapshots();
+  }
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getUnreadCount(
+      String toId) {
+    var chatId = getChatId(currUsrId, toId);
+    return _firebaseStrore
+        .collection(CHATROOM_COLLECTION)
+        .doc(chatId)
+        .collection('messages')
+        .where('fromId', isEqualTo: toId)
+        .where('read', isEqualTo: '')
+        .snapshots();
   }
 }

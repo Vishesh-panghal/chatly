@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable, depend_on_referenced_packages
 
-import 'package:chatly/Data/Modal/chatRoomModal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:chatly/Data/Modal/chatRoomModal.dart';
 
 import '../Data/constants/color_constants.dart';
 import '../firebase/firebaseProvider.dart';

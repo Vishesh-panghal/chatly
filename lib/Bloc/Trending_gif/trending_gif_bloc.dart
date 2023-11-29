@@ -3,8 +3,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../API/Api_helper.dart';
-import '../../API/Api_urls.dart';
+import '../../API/api_helper.dart';
+import '../../API/api_urls.dart';
 import '../../API/myException.dart';
 import '../../Data/GIPHY/Trending_Modal/GifData_Modal.dart';
 
@@ -17,7 +17,7 @@ class TrendingGifBloc extends Bloc<TrendingGifEvent, TrendingGifState> {
     on<TrendingGifEvent>((event, emit) async {
       emit(TrendingGifLoadingState());
       try {
-        var res = await apiHelper.getApiData(url: Gif_api_url.trending_url);
+        var res = await apiHelper.getApiData(url: api_url.trending_url);
         // print('object ${Gif_api_url.trending_url}');
         // print('Response: $res');
         emit(

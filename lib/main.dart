@@ -1,6 +1,6 @@
 // ignore_for_file: unused_import
 
-import 'package:chatly/API/Api_helper.dart';
+import 'package:chatly/API/api_helper.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +14,7 @@ import 'Screen/Auth/Responsive/mobile_view.dart';
 import 'Screen/Auth/Screens/WelcomeScreen.dart';
 import 'Screen/Personal/profile.dart';
 import 'Screen/Personal/settings.dart';
+import 'Screen/aiScreen.dart';
 import 'Screen/splashScreen.dart';
 import 'Screen/tablet_scaffold.dart';
 import 'Screen/userChatScreen.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         tabletScaffold: TabletScaffold(),
         desktopScaffld: DesktopAuthScreen(),
       ),
-      // home:const MapPage(),
+      // home: const AIChatPage(),
     );
   }
 

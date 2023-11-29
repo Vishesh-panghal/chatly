@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables, depend_on_referenced_packages
 
 import 'dart:async';
 
@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:chatly/Screen/aiScreen.dart';
 
 import '../Data/constants/color_constants.dart';
 import '../firebase/firebaseProvider.dart';
@@ -28,6 +30,14 @@ class MobileScaffold extends StatelessWidget {
         children: [
           SpeedDialChild(child: Icon(Icons.group), label: 'New chat'),
           SpeedDialChild(child: Icon(Icons.group), label: 'New group'),
+          SpeedDialChild(
+            child: Icon(Icons.bubble_chart),
+            label: 'Chatbot',
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AIChatPage()));
+            },
+          ),
         ],
         child: Icon(Icons.forum, color: ColorConstants.whiteShade),
       ),
