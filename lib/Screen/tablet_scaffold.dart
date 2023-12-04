@@ -26,7 +26,10 @@ class TabletScaffold extends StatelessWidget {
           ),
           Expanded(
             flex: 2,
-            child: ChatScreen(name: 'Vishesh',toId: '',),
+            child: ChatScreen(
+              name: 'Vishesh',
+              toId: '',
+            ),
           ),
         ],
       ),

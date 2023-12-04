@@ -11,6 +11,7 @@ import 'Bloc/Trending_gif/trending_gif_bloc.dart';
 import 'Responsive/homepage.dart';
 import 'Screen/Auth/Responsive/desktop_view.dart';
 import 'Screen/Auth/Responsive/mobile_view.dart';
+import 'Screen/Auth/Responsive/tablet_view.dart';
 import 'Screen/Auth/Screens/WelcomeScreen.dart';
 import 'Screen/Personal/profile.dart';
 import 'Screen/Personal/settings.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomePage(
         mobileScaffold: SplashScreenPage(),
-        tabletScaffold: TabletScaffold(),
+        tabletScaffold: SplashScreenPage(),
         desktopScaffld: DesktopAuthScreen(),
       ),
       // home: const AIChatPage(),
